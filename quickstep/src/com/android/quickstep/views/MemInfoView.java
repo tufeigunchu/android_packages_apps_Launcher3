@@ -146,6 +146,13 @@ public class MemInfoView extends TextView {
             intent.setClassName("com.android.settings", "com.android.settings.Settings$DevRunningServicesActivity");
             context.startActivity(intent);
         });
+	setOnLongClickListener(view -> {
+            Intent intent = new Intent(Intent.ACTION_MAIN);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            intent.setClassName("org.crdroid.AppManager", "io.github.muntashirakon.AppManager.runningapps.RunningAppsActivity");
+            context.startActivity(intent);
+            return true;
+        });
     }
 
     private class MemInfoWorker implements Runnable {
